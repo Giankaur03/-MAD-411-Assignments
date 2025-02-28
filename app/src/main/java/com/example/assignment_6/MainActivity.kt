@@ -1,20 +1,45 @@
 package com.example.assignment_6
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+//    @SuppressLint("MissingInflatedId")
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
+
+        val textName = findViewById<EditText>(R.id.editTextName)
+        val button = findViewById<Button>(R.id.calc_button)
+        val viewName = findViewById<TextView>(R.id.num_text_view)
+
+        button.setOnClickListener{
+            val textName_1 = textName.text.toString()
+            if (textName_1.isEmpty()){
+                viewName.text = "Enter your name."
+            }else{
+                viewName.text = "Hello  $textName_1"
+            }
         }
+
+
     }
 }
