@@ -27,18 +27,18 @@ class MainActivity : AppCompatActivity() {
 //            insets
 //        }
 
-        val textName = findViewById<EditText>(R.id.editTextName)
-        val button = findViewById<Button>(R.id.calc_button)
-        val viewName = findViewById<TextView>(R.id.num_text_view)
-
-        button.setOnClickListener{
-            val textName_1 = textName.text.toString()
-            if (textName_1.isEmpty()){
-                viewName.text = "Enter your name."
-            }else{
-                viewName.text = "Hello  $textName_1"
-            }
-        }
+//        val textName = findViewById<EditText>(R.id.editTextName)
+//        val button = findViewById<Button>(R.id.calc_button)
+//        val viewName = findViewById<TextView>(R.id.num_text_view)
+//
+//        button.setOnClickListener{
+//            val textName_1 = textName.text.toString()
+//            if (textName_1.isEmpty()){
+//                viewName.text = "Enter your name."
+//            }else{
+//                viewName.text = "Hello  $textName_1"
+//            }
+//        }
 
 
     }
