@@ -1,6 +1,8 @@
 package com.example.assignment_6
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var displayExpence: ExpenceItemAdapter
     private val expenseList = mutableListOf<Expense>()
 
+    private lateinit var buttonFinTips: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         button_add = findViewById(R.id.button_add)
         recyclerview = findViewById(R.id.recycleview)
 
+
         recyclerview.layoutManager = LinearLayoutManager(this)
         displayExpence = ExpenceItemAdapter(expenseList) { position -> deleteExpence(position) }
 
@@ -46,6 +50,9 @@ class MainActivity : AppCompatActivity() {
             addExpence()
         }
 
+        buttonFinTips.setOnClickListener{
+            openFinTips()
+        }
     }
 
     private fun addExpence() {
@@ -62,12 +69,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun deleteExpence(position: Int) {
         expenseList.removeAt(position)
         displayExpence.notifyItemRemoved(position)
 
     }
 
+    private fun showExpDetails(expense: Expense){
+        val intel = Intent(this, ExpenseDetailsActivity::class.java).apply{
+            putExtra("Expense_Name", expense.name)
+            putExtra("Expense_Amount", expense.amount)
+        }
+
+        startActivity(intent)
+    }
+
+
+    private fun openFinTips(){
+        val intent = Intent(Intent.ACTION_VIEW).apply{
+            data = Uri.parse("https://www.bark.com/en/ca/in/financial-advisors/?campaign=bing-376618450-1266638062341510-financial-advisors-c&popup=true&trk_ad_id=79165042235869&trk_kw_id=kwd-79165257151257:loc-4062&trk_msloc_phs=124876&trk_msloc_int=&trk_src=b&trk_msclid=67c57e4ad6dd1aa0f782199727dd6f42&msclkid=67c57e4ad6dd1aa0f782199727dd6f42&utm_source=bing&utm_medium=cpc&utm_campaign=Financial%20Advice%20-%20National&utm_term=financial%20service%20advisor&utm_content=financial-advisors")
+        }
+        startActivity(intent)
+    }
 
     override fun onStart() {
         super.onStart()
