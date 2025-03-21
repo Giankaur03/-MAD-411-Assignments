@@ -9,22 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
 class ExpenceItemAdapter(private val dataSet:Array<String>):
-RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>(){
+RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-                val expence: TextView
-                val amount: TextView
-                val delete: Button
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val expence: TextView
+        val amount: TextView
+        val delete: Button
 
-                init {
-                    expence= view.findViewById(R.id.DisplayExpence)
-                    amount = view.findViewById(R.id.displayAmount)
-                    delete= view.findViewById(R.id.deleteitem)
-                }
-            }
+        init {
+            expence = view.findViewById(R.id.DisplayExpence)
+            amount = view.findViewById(R.id.displayAmount)
+            delete = view.findViewById(R.id.deleteitem)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.expence_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.expence_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -36,8 +36,11 @@ RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.expence.text = dataSet[position]
         holder.amount.text = dataSet[position]
-        holder.delete.setOnClickListener({
+        holder.delete.setOnClickListener {
+//            onDeleteClick(position)
+        }
 
-        })
     }
-}
+    }
+
+//    override fun getItemCount():Int = dataSet.size

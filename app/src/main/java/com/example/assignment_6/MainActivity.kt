@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 //    @SuppressLint("MissingInflatedId")
@@ -21,25 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
-
-//        val textName = findViewById<EditText>(R.id.editTextName)
-//        val button = findViewById<Button>(R.id.calc_button)
-//        val viewName = findViewById<TextView>(R.id.num_text_view)
-//
-//        button.setOnClickListener{
-//            val textName_1 = textName.text.toString()
-//            if (textName_1.isEmpty()){
-//                viewName.text = "Enter your name."
-//            }else{
-//                viewName.text = "Hello  $textName_1"
-//            }
-//        }
 
 
-    }
+//    private lateinit var editExpencename: EditText
+//    private lateinit var editAmount: EditText
+//    private lateinit var button_add: Button
+//    private lateinit var recyclerview: RecyclerView
+//    private lateinit var displayExpence: ExpenceAdapter
+//    private val expenseList = mutableListOf<Expense>()
+
+
+}
 }
