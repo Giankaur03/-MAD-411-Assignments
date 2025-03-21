@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 
-class ExpenceItemAdapter(private val dataSet:Array<String>):
+class ExpenceItemAdapter(private val expenses: MutableList<Expense>,
+    private val onDeleteClick: (Int)-> Unit):
 RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,19 +28,19 @@ RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>() {
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-
-        return dataSet.size
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.expence.text = dataSet[position]
-        holder.amount.text = dataSet[position]
+        val expense = expenses[position]
+        holder.expence.text = expense.name
+        holder.amount.text = "CAD${expense.amount}"
         holder.delete.setOnClickListener {
-//            onDeleteClick(position)
+            onDeleteClick(position)
         }
 
     }
-    }
 
-//    override fun getItemCount():Int = dataSet.size
+    override fun getItemCount(): Int = expenses.size
+
+
+}
+

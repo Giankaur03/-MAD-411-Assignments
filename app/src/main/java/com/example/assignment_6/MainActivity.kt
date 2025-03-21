@@ -9,28 +9,57 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-//    @SuppressLint("MissingInflatedId")
+
+    private lateinit var editExpencename: EditText
+    private lateinit var editAmount: EditText
+    private lateinit var button_add: Button
+    private lateinit var recyclerview: RecyclerView
+    private lateinit var displayExpence: ExpenceItemAdapter
+    private val expenseList = mutableListOf<Expense>()
 
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //Initializer
+        editExpencename = findViewById(R.id.editExpencename)
+        editAmount = findViewById(R.id.editAmount)
+        button_add = findViewById(R.id.button_add)
+        recyclerview = findViewById(R.id.recycleview)
 
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        displayExpence = ExpenceItemAdapter(expenseList) { position -> deleteExpence(position) }
 
+        recyclerview.adapter = displayExpence
 
-//    private lateinit var editExpencename: EditText
-//    private lateinit var editAmount: EditText
-//    private lateinit var button_add: Button
-//    private lateinit var recyclerview: RecyclerView
-//    private lateinit var displayExpence: ExpenceAdapter
-//    private val expenseList = mutableListOf<Expense>()
+        button_add.setOnClickListener {
+            addExpence()
+        }
 
+    }
 
-}
+    private fun addExpence(){
+        val name = editExpencename.text.toString().trim()
+        val amount = editAmount.text.toString().trim()
+
+        if(name.isNotEmpty() && amount.isNotEmpty()){
+            val expense = Expense(name, amount)
+            expenseList.add(expense)
+            displayExpence.notifyItemInserted(expenseList.size - 1)
+
+            editExpencename.text.clear()
+            editAmount.text.clear()
+        }
+    }
+
+    private fun deleteExpence(position: Int) {
+        expenseList.removeAt(position)
+        displayExpence.notifyItemRemoved(position)
+
+    }
 }
