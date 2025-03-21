@@ -2,6 +2,7 @@ package com.example.assignment_6
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+        Log.d("Lifecycle", "onCreate called")
+
         //Initializer
         editExpencename = findViewById(R.id.editExpencename)
         editAmount = findViewById(R.id.editAmount)
@@ -43,11 +48,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addExpence(){
+    private fun addExpence() {
         val name = editExpencename.text.toString().trim()
         val amount = editAmount.text.toString().trim()
 
-        if(name.isNotEmpty() && amount.isNotEmpty()){
+        if (name.isNotEmpty() && amount.isNotEmpty()) {
             val expense = Expense(name, amount)
             expenseList.add(expense)
             displayExpence.notifyItemInserted(expenseList.size - 1)
@@ -62,4 +67,34 @@ class MainActivity : AppCompatActivity() {
         displayExpence.notifyItemRemoved(position)
 
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("Lifecycle", "OnStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Lifecycle", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Lifecycle", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Lifecycle", "onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Lifecycle", "onDestroy")
+    }
+
 }
+
+
+
