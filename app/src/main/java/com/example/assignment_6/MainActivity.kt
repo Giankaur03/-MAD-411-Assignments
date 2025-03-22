@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        supportFragmentManager.beginTransaction().add(R.id.headerContainer, Header()).commit()
+
 
         Log.d("Lifecycle", "onCreate called")
 
@@ -74,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         expenseList.removeAt(position)
         displayExpence.notifyItemRemoved(position)
 
+        updateFooter()
     }
 
     private fun showExpDetails(expense: Expense){
@@ -83,6 +86,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         startActivity(intent)
+    }
+
+    private fun updateFooter(){
+        val totalCost = expenseList.sumOf { it.amount.toDouble()?: 0.0 }
+        supportFragmentManager.beginTransaction().replace(R.id.footer, Footer(totalCost)).commit()
     }
 
 
