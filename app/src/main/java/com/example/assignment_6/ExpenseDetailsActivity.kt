@@ -10,7 +10,7 @@ class ExpenseDetailsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.expense_item)
+        setContentView(R.layout.expense_item)
 
 
         binding = ExpenseDetailsBinding.inflate(layoutInflater)
