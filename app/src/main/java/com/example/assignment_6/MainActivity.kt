@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             putExtra("Expense_Amount", expense.amount)
         }
 
-        startActivity(intent)
+        startActivity(intel)
     }
 
     private fun updateFooter(){

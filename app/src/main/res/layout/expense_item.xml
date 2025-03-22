@@ -9,14 +9,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="ExpenceName" />
+        android:text="Expense Name" />
 
     <TextView
         android:id="@+id/displayAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="AmountName" />
+        android:text="Amount Name" />
 
     <Button
         android:id="@+id/deleteitem"

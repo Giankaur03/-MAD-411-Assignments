@@ -24,7 +24,7 @@ RecyclerView.Adapter<ExpenceItemAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.expence_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.expense_item, parent, false)
         return ViewHolder(view)
     }
 
